@@ -6,7 +6,6 @@ namespace MyUtilities
 {
     public class ObjectPool
     {
-
         private string _poolName;
         private GameObject _item;
         private int _amtOfCopies;
@@ -25,7 +24,7 @@ namespace MyUtilities
 
         public ObjectPool(GameObject item, GameObject parent, int amtOfCopies = 10, bool expandable = true, bool status = false, bool clearOnDisable = true)
         {
-            this._poolName = $"{item.name} (Clone)";
+            this._poolName = $"{item.name}(Clone)";
             this._item = item;
             this._amtOfCopies = amtOfCopies;
             this._expandable = expandable;
@@ -41,8 +40,9 @@ namespace MyUtilities
         {
             if (_parent == null)
             {
+                Debug.LogWarning("There's no main parent pool");
                 _parent = new GameObject();
-                _parent.name = $"== {_item.name} pool ==";
+                _parent.name = $"{_item.name} pool";
             }
 
 
@@ -68,9 +68,9 @@ namespace MyUtilities
             return toUse;
         }
 
-        private bool BelongToPool(GameObject objectCheck)
+        private bool BelongToPool(GameObject checkObject)
         {
-            return $"{ _item.name} (Clone)" == objectCheck.name;
+            return $"{ _item.name}(Clone)" == checkObject.name;
         }
 
         public void ReturnToPool(GameObject returnObject)
@@ -93,7 +93,6 @@ namespace MyUtilities
             {
                 GameObject.Destroy(copy);
             }
-
             _copies.Clear();
         }
     }

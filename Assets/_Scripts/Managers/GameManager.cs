@@ -1,18 +1,49 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float _spawnInterval;
+
+    [SerializeField] private float _maxItemSpeed;
+
+    [SerializeField] private float _decayRate;
+
+    public GameState _currentGameState;
+
+
+    private float _currentInterval;
+
+    public float _currentItemSpeed;
+
+    public static event Action<float> OnItemSpawn;
+
+    public static event Action OnSpawnInterval;
+
+
+    private void Start()
     {
-        
+        _currentInterval = _spawnInterval;
+        _currentItemSpeed = _maxItemSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        _currentItemSpeed -= _decayRate * Time.deltaTime;
+
+        if (_currentItemSpeed < 0f) return; 
+
+
+        if (Time.time > _currentInterval)
+        {
+
+            OnSpawnInterval?.Invoke();
+            OnItemSpawn?.Invoke(_currentItemSpeed);
+            _currentInterval = Time.time + _spawnInterval;
+        }
+
     }
+
 }

@@ -1,59 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyUtilities.InheritPool
+namespace MyUtilities
 {
-    public class PooledObjectItem : MonoBehaviour
+    public static class PooledObjectItem
     {
-        [Header("Object Pooling")]
-        [SerializeField] private int _numberOfCopies;
+        private static Dictionary<string, ObjectPool> pooledDictionary = new Dictionary<string, ObjectPool>();
 
-        [SerializeField] private bool _expandable;
-
-        [SerializeField] private bool _enableOnInstantiate;
-
-        [SerializeField] private bool _clearOnDisable;
-
-        [SerializeField] private Transform _parent;
-
-        private ObjectPool _pool;
-
-        protected virtual void Start()
+        public static void Add(string key, GameObject item, GameObject parent, int amtOfCopies = 10, bool expandable = true, bool status = false, bool clearOnDisable = true)
         {
-            _pool = new ObjectPool(this.gameObject, _parent.gameObject,_numberOfCopies, _expandable, _enableOnInstantiate, _clearOnDisable);
+            pooledDictionary.Add(key, new ObjectPool(item, parent, amtOfCopies, expandable, status, clearOnDisable));
         }
 
-        protected GameObject GetObject()
+        public static GameObject GetObject(string key)
         {
-            return _pool.GetObject();
+            return pooledDictionary.TryGetValue(key, out var pool) ? pool.GetObject() : null;
         }
 
-        protected void ReturnToPool(GameObject pooledObject)
+        public static void ReturnToPool(string key, GameObject returnObject)
         {
-            _pool.ReturnToPool(pooledObject);
+            if (pooledDictionary.TryGetValue(key, out var pool))
+            {
+                pool.ReturnToPool(returnObject);
+            }
         }
-
     }
 }
-//public static class PooledObjectItem
-//{
-//    private static Dictionary<string, ObjectPool> pooledDictionary = new Dictionary<string, ObjectPool>();
-
-//    public static void Add(string key, GameObject item, GameObject parent, int amtOfCopies = 10, bool expandable = true, bool status = false, bool clearOnDisable = true)
-//    {
-//        pooledDictionary.Add(key, new ObjectPool(item, parent, amtOfCopies, expandable, status, clearOnDisable));
-//    }
-
-//    public static GameObject GetObject(string key)
-//    {
-//        return pooledDictionary.TryGetValue(key, out var pool) ? pool.GetObject() : null;
-//    }
-
-//    public static void ReturnToPool(string key, GameObject returnObject)
-//    {
-//        if (pooledDictionary.TryGetValue(key, out var pool))
-//        {
-//            pool.ReturnToPool(returnObject);
-//        }
-//    }
-//}
