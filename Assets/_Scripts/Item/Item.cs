@@ -48,6 +48,7 @@ public class Item : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Log("Collided to player");
             ReturnItem();
         }
     }
@@ -60,6 +61,7 @@ public class Item : MonoBehaviour
             _decayTimer -= Time.deltaTime;
             yield return null;
         }
+        Log("Item Decayed");
         ReturnItem();
     }
 

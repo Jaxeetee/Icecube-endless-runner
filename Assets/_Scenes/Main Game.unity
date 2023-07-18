@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPersist: 0
-  _spawnInterval: 1
+  _maxSpawnInterval: 4
   _maxItemSpeed: 10
   _decayRate: 0
   _currentGameState: 1
@@ -730,6 +730,8 @@ GameObject:
   - component: {fileID: 1930378547}
   - component: {fileID: 1930378546}
   - component: {fileID: 1930378550}
+  - component: {fileID: 1930378552}
+  - component: {fileID: 1930378551}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -852,3 +854,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &1930378551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930378545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e78016ede95d2d47a90fa1d36be0540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1930378552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930378545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117a10b0a3de8754484822dd45531fba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

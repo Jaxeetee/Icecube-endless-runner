@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private float _xAxisMovement;
+    private Vector3 _inputVector;
+
+    private void OnEnable()
     {
-        
+        InputHandler.OnPlayerMove += SetValue;
     }
 
-    // Update is called once per frame
+    private void OnDisable()
+    {
+        InputHandler.OnPlayerMove -= SetValue;   
+    }
+
     void Update()
     {
-        
+        _inputVector.x = Mathf.Clamp(_inputVector.x, -3f, 3f);
+        transform.position += _inputVector  * Time.deltaTime;
+    }
+
+    private void SetValue(float value)
+    {
+        Debug.Log($"value {value}");
+        _inputVector.x = value;
     }
 }

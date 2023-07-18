@@ -32,7 +32,7 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         _currentItemSpeed -= _decayRate * Time.deltaTime;
-        _currentItemSpeed = Mathf.Clamp(_currentItemSpeed, 1f, _maxItemSpeed);
+        _currentItemSpeed = Mathf.Clamp(_currentItemSpeed, 1, _maxItemSpeed);
 
         if (_currentItemSpeed < 0f) return; 
 

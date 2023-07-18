@@ -41,7 +41,7 @@ public partial class @PlayerControlAsset: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""04ed41dc-8524-4be9-9b7e-97dd30c577c6"",
-                    ""path"": ""<Mouse>/position/x"",
+                    ""path"": ""<Mouse>/delta/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

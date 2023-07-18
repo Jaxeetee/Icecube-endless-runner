@@ -15,12 +15,12 @@ public class InputHandler : MonoBehaviour
 
     private void OnEnable()
     {
+        SwitchCurrentActionMap(StringManager.ACTIONMAP_MAINGAME);
         EnableActionMapMainGame();
     }
 
     private void Start()
     {
-        SwitchCurrentActionMap(StringManager.ACTIONMAP_MAINGAME);
     }
 
     // just in case I have to make a new action map
@@ -35,12 +35,20 @@ public class InputHandler : MonoBehaviour
 
     private void EnableActionMapMainGame()
     {
+        Debug.Log("Enabled");
         InputActionMap inputActions = _inputs.MainGame;
 
         inputActions.FindAction(StringManager.INPUT_SIDEMOVEMENT).performed += ctx =>
         {
             float value = ctx.ReadValue<float>();
-            Debug.Log("value");
+            Debug.Log($"{value}");
+            OnPlayerMove?.Invoke(value);
+        };
+        
+        inputActions.FindAction(StringManager.INPUT_SIDEMOVEMENT).canceled += ctx =>
+        {
+            float value = ctx.ReadValue<float>();
+            Debug.Log($"{value}");
             OnPlayerMove?.Invoke(value);
         };
     }

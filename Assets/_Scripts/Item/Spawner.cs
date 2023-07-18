@@ -51,8 +51,10 @@ public class Spawner : MonoBehaviour
                 spawnedItem = GetItem(randBool == 1);
             }
 
+            if (spawnedItem == null) return;
+
+            spawnedItem.transform.rotation = Quaternion.Euler(0, 180, 0);
             spawnedItem.transform.position = _spawnLocations[i].position;
-            spawnedItem.transform.rotation = this.transform.rotation;
             spawnedItem.SetActive(true);
         }
     }
