@@ -1,10 +1,12 @@
 using MyUtilities;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    [Header("DEBUGGING")]
+    [SerializeField] private bool _enableDebugger;
+
     [SerializeField] private Itemtype _itemType;
 
     [SerializeField] private string _poolKey;
@@ -46,7 +48,6 @@ public class Item : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player hit!");
             ReturnItem();
         }
     }
@@ -64,6 +65,33 @@ public class Item : MonoBehaviour
 
     private void ReturnItem()
     {
+        Log($"Item {this.name} returned to pool {_poolKey}");
         PooledObjectItem.ReturnToPool(_poolKey, this.gameObject);
     }
+
+
+    #region DEBUGGING
+    private void Log(string msg)
+    {
+        if (!_enableDebugger) return;
+
+        Debug.Log(msg);
+    }
+
+    private void LogWarning(string msg)
+    {
+        if (!_enableDebugger) return;
+
+        Debug.LogWarning(msg);
+    }
+
+    private void LogError(string msg) 
+    {
+        if (!_enableDebugger) return;
+
+        Debug.LogError(msg);
+    }
+
+
+    #endregion
 }

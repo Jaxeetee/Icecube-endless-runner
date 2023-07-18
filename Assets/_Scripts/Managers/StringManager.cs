@@ -6,4 +6,9 @@ public static class StringManager
         "Ice Cube",
         "Fire"
     };
+
+
+    public const string ACTIONMAP_MAINGAME = "Main Game";
+    public const string INPUT_SIDEMOVEMENT = "SideMovement";
 }
+

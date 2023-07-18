@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private float _spawnInterval;
+    [SerializeField] private float _maxSpawnInterval;
 
     [SerializeField] private float _maxItemSpeed;
 
@@ -25,13 +25,14 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        _currentInterval = _spawnInterval;
+        _currentInterval = _maxSpawnInterval;
         _currentItemSpeed = _maxItemSpeed;
     }
 
     private void Update()
     {
         _currentItemSpeed -= _decayRate * Time.deltaTime;
+        _currentItemSpeed = Mathf.Clamp(_currentItemSpeed, 1f, _maxItemSpeed);
 
         if (_currentItemSpeed < 0f) return; 
 
@@ -41,7 +42,7 @@ public class GameManager : Singleton<GameManager>
 
             OnSpawnInterval?.Invoke();
             OnItemSpawn?.Invoke(_currentItemSpeed);
-            _currentInterval = Time.time + _spawnInterval;
+            _currentInterval = Time.time + _maxSpawnInterval;
         }
 
     }

@@ -1,0 +1,45 @@
+{
+    "name": "PlayerControlAsset",
+    "maps": [
+        {
+            "name": "Main Game",
+            "id": "a70024a9-4c0d-4fea-93ff-0d9a3bcc7853",
+            "actions": [
+                {
+                    "name": "SideMovement",
+                    "type": "Value",
+                    "id": "216a4d4d-6bed-4b90-8e7c-acdfd4450dac",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "04ed41dc-8524-4be9-9b7e-97dd30c577c6",
+                    "path": "<Mouse>/position/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SideMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3310cb07-4b0d-40c4-b74d-da0553a3ba4d",
+                    "path": "<Touchscreen>/touch1/position/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SideMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
