@@ -7,18 +7,11 @@ public class Item : MonoBehaviour
     [Header("DEBUGGING")]
     [SerializeField] private bool _enableDebugger;
 
-    [SerializeField] private Itemtype _itemType;
-
     [SerializeField] private string _poolKey;
 
     [SerializeField] private float _activeTimer;
 
     private float _decayTimer;
-
-    public Itemtype itemType
-    {
-        get => _itemType;
-    }
 
     private float _itemSpeed;
 

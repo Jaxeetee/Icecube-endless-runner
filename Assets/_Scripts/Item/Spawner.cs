@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
             GameObject spawnedItem = GetRandomItem();
 
             Item item = spawnedItem.GetComponent<Item>();
-            if (item.itemType == Itemtype.Obstacle) obstacleCounter++; // 2 max 
+            if (spawnedItem.CompareTag("Obstacle")) obstacleCounter++; // 2 max 
 
             // changes to either an Ice Item or an empty object
             if (obstacleCounter > maxObstacles)

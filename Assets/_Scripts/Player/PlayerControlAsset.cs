@@ -41,7 +41,7 @@ public partial class @PlayerControlAsset: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""04ed41dc-8524-4be9-9b7e-97dd30c577c6"",
-                    ""path"": ""<Mouse>/delta/x"",
+                    ""path"": ""<Mouse>/position/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -51,8 +51,8 @@ public partial class @PlayerControlAsset: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3310cb07-4b0d-40c4-b74d-da0553a3ba4d"",
-                    ""path"": ""<Touchscreen>/touch1/position/x"",
+                    ""id"": ""3c0fdd09-0156-4bc8-a1b0-612cf29cb6e9"",
+                    ""path"": ""<Touchscreen>/delta/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

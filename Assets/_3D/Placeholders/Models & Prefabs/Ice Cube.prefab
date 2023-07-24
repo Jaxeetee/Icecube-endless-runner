@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1792839582809372653}
   m_Layer: 0
   m_Name: Ice Cube
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e7b3e41224f7645975f08279ec1b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enableDebugger: 0
   _itemType: 0
   _poolKey: Ice Cube
   _activeTimer: 10

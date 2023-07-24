@@ -5,11 +5,6 @@ public class CanvasManager : Singleton<CanvasManager>
 {
     [SerializeField] 
     private CanvasController[] _pages;
-
-    private void Start()
-    {
-        OpenPage("Main Menu");
-    }
     public void OpenPage(string pageName)
     {
         CloseAllPages();
